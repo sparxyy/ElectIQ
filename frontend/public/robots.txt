@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /learn
+Disallow: /quiz
+Disallow: /assistant
+
+# Sitemaps can be added here
+# Sitemap: https://electiq.app/sitemap.xml
