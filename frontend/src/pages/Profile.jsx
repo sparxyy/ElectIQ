@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useProgress } from '../context/ProgressContext';
 import { useToast } from '../components/Toast';
-import { MODULES } from '../lib/modules';
 
 const Profile = () => {
   const { user, updateUser, logout } = useAuth();

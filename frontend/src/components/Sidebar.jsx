@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MODULES } from '../lib/modules';
 import { useProgress } from '../context/ProgressContext';

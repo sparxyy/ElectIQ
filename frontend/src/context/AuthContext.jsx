@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext(null);
 
@@ -36,8 +36,10 @@ export function AuthProvider({ children }) {
     if (token && savedUser) {
       try {
         const parsed = JSON.parse(savedUser);
-        setUser(parsed);
-        setIsAuthenticated(true);
+        setTimeout(() => {
+          setUser(parsed);
+          setIsAuthenticated(true);
+        }, 0);
       } catch {
         localStorage.removeItem('electiq_token');
         localStorage.removeItem('electiq_user');

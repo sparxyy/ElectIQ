@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { QUIZ_DATA } from '../lib/quizData';
 import { useProgress } from '../context/ProgressContext';
 import { useToast } from '../components/Toast';
 
 const Quiz = () => {
   const { moduleId } = useParams();
-  const navigate = useNavigate();
-  const { saveQuizScore } = useProgress();
+    const { saveQuizScore } = useProgress();
   const { showToast } = useToast();
 
   const mId = parseInt(moduleId) || 1;

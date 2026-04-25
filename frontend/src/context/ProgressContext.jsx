@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 
 const ProgressContext = createContext(null);
@@ -22,13 +23,13 @@ export function ProgressProvider({ children }) {
       const saved = localStorage.getItem('electiq_progress');
       if (saved) {
         try {
-          setProgress({ ...DEFAULT_PROGRESS, ...JSON.parse(saved) });
+          setTimeout(() => setProgress({ ...DEFAULT_PROGRESS, ...JSON.parse(saved) }), 0);
         } catch {
-          setProgress(DEFAULT_PROGRESS);
+          setTimeout(() => setProgress(DEFAULT_PROGRESS), 0);
         }
       }
     } else {
-      setProgress(DEFAULT_PROGRESS);
+      setTimeout(() => setProgress(DEFAULT_PROGRESS), 0);
     }
   }, [isAuthenticated]);
 

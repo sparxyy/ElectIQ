@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { MODULES } from '../lib/modules';
 import { useProgress } from '../context/ProgressContext';
 
 const Learn = () => {
   const { moduleId } = useParams();
-  const navigate = useNavigate();
-  const { progress, markModuleStarted, markModuleCompleted, saveCardIndex, getNextIncompleteModule } = useProgress();
+    const { progress, markModuleStarted, markModuleCompleted, saveCardIndex, getNextIncompleteModule } = useProgress();
 
   // Resolve module
   const mId = moduleId ? parseInt(moduleId) : getNextIncompleteModule();
@@ -16,16 +15,17 @@ const Learn = () => {
   const [completed, setCompleted] = useState(false);
 
   // Load saved card index on mount
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (module) {
       markModuleStarted(module.id);
       const savedIndex = progress.currentCardIndex[module.id];
       if (savedIndex !== undefined && savedIndex < module.cards.length) {
-        setCurrentCard(savedIndex);
+        setTimeout(() => setCurrentCard(savedIndex), 0);
       } else {
-        setCurrentCard(0);
+        setTimeout(() => setCurrentCard(0), 0);
       }
-      setCompleted(progress.completedModules.includes(module.id));
+      setTimeout(() => setCompleted(progress.completedModules.includes(module.id)), 0);
     }
   }, [mId]);
 
@@ -83,7 +83,7 @@ const Learn = () => {
             {nextModuleId && (
               <Link 
                 to={`/learn/${nextModuleId}`} 
-                onClick={() => { setCompleted(false); setCurrentCard(0); }}
+                onClick={() => { setCompleted(false); setTimeout(() => setCurrentCard(0), 0); }}
                 className="pressable-button-secondary flex-1 py-4 text-center font-bold"
               >
                 Next Module →

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { sendChatMessage } from '../lib/api';
 import { useProgress } from '../context/ProgressContext';
 
@@ -21,13 +21,15 @@ const Assistant = () => {
   const inputRef = useRef(null);
 
   // Load chat history on mount
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (progress.chatHistory && progress.chatHistory.length > 0) {
-      setMessages(progress.chatHistory);
+      setTimeout(() => setMessages(progress.chatHistory), 0);
     }
   }, []);
 
   // Scroll to bottom on new message
+   
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, loading]);
